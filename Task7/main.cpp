@@ -1,5 +1,5 @@
-#include "../lib/uopmsb/uop_msb_2_0_0.h"
-using namespace uop_msb_200;
+#include "uop_msb.h"
+using namespace uop_msb;
 
 // You are to use these ojects to read the switch inputs
 DigitalIn SW1(USER_BUTTON);
@@ -16,7 +16,7 @@ Buzzer player;
 
 // Note array. The string "-" is a rest
 typedef struct {
-    char note[3];
+    char note[3]; //Space for 2 characters and a zero (end of string character)
     Buzzer::OCTAVE_REGISTER octave;
     unsigned int time_ms;
 } NOTE;
@@ -118,7 +118,8 @@ int main()
         // 1. Write a loop to play the tune in the array `notes`
         //    You may recognise the tune :)
         //    Use player.playTone followed by a player.rest() to get the right duration of note as shown above
-
+        //
+        // 2. Write a nested loop to play the tune twice. Avoid replicating any code where possible.
         
         // ***** MODIFY THE CODE ABOVE HERE *****
         

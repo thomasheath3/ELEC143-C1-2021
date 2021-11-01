@@ -1,5 +1,5 @@
-#include "../lib/uopmsb/uop_msb_2_0_0.h"
-using namespace uop_msb_200;
+#include "uop_msb.h"
+using namespace uop_msb;
 
 // You are to use these ojects to read the switch inputs
 DigitalIn sw1(BTN1_PIN);
@@ -24,14 +24,16 @@ int main()
 
     // 4. Wait for either sw1 or sw2 to be released
 
-    // 5. Turn on all LEDs
+    // 5. Turn on only the yellow and green LEDs
 
     // 6. Wait for 1s
 
-    // 7. Turn off all LEDs
+    // 7. Turn on only the red LEDs
 
     // ***** MODIFY THE CODE ABOVE HERE *****
     }
+
+    while(true);
 }
 
 

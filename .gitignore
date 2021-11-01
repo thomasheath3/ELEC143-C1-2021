@@ -1,7 +1,8 @@
-.build
-.mbed
-projectfiles
-*.py*
-mbed-os
 BUILD
-
+.mbed
+mbed-os
+libuopmsb
+.DS_Store
+.DS_Store
+*.zip
+.DS_Store

@@ -1,33 +1,24 @@
-#include "../lib/uopmsb/uop_msb_2_0_0.h"
-using namespace uop_msb_200;
+#include "uop_msb.h"
+using namespace uop_msb;
 
-// You are to use this object to control the LEDs
+DigitalIn BlueButton(USER_BUTTON);
 BusOut leds(TRAF_RED1_PIN, TRAF_YEL1_PIN, TRAF_GRN1_PIN);
+LCD_16X2_DISPLAY display;
 
 int main()
 {
 
     // ***** MODIFY THE CODE BELOW HERE *****
 
-    //1. Turn only the yellow LED ON
+    //1. Use a while loop to wait for the blue button to be pressed, then released. For full marks, account for switch bounce.
 
-    //2. Pause for 1s
+    //2. Using a while-loop, flash the yellow LED on and off 5 times. Each flash should last 0.5s. 
 
-    //3. Turn only the red LED ON
+    //3. Using a while-loop, flash the green LED on and off 10 times. Each flash should last 0.25s. 
 
-    //4. Pause for 1s
+    //4. Using a while-loop, flash the red LED on and off 20 times. Each flash should last 0.125s. 
 
-    //5. Turn only the green LED ON
-
-    //6. Pause for 1s
-
-    //7. Using a while-loop, flash the yellow LED on and off 5 times. Each flash should last 0.25s. 
-
-    //8. Using a do-while-loop, flash the green LED on and off 5 times. Each flash should last 0.25s. 
-
-    //9. Using a for-loop, flash the red LED on and off 5 times. Each flash should last 0.25s. 
-
-    //10. Turn off all the LEDs
+    //5. Using a while-loop, count from -50 downto +50 in steps of -10 - print the results on row 1 of the LCD screen every 0.5 second 
 
     // ***** MODIFY THE CODE ABOVE HERE *****
 
