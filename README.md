@@ -1,8 +1,8 @@
-# ELEC143-C1-2020
+# ELEC143-C1-2021
 
-Coursework Template for ELEC143 C1 2020
+Coursework Template for ELEC143 C1 2021
 
 Distributed by GitHub Classroom
 -------------------------------
 
-2020 Nicholas Outram, University of Plymouth
+2021 Nicholas Outram, University of Plymouth
