@@ -18,7 +18,7 @@ int main()
 
     //4. Using a while-loop, flash the red LED on and off 20 times. Each flash should last 0.125s. 
 
-    //5. Using a while-loop, count from -50 downto +50 in steps of -10 - print the results on row 1 of the LCD screen every 0.5 second 
+    //5. Using a while-loop, count from 50 down to -50 in steps of 10 - print the results on row 1 of the LCD screen every 0.5 second 
 
     // ***** MODIFY THE CODE ABOVE HERE *****
 
