@@ -9,11 +9,15 @@ int main()
 {
 
     // ***** MODIFY THE CODE BELOW HERE *****
-
+    int n = 0;
     //1. Use a while loop to wait for the blue button to be pressed, then released. For full marks, account for switch bounce.
-
+    while (BlueButton == 0){
+        wait_us(100000);
+    }
     //2. Using a while-loop, flash the yellow LED on and off 5 times. Each flash should last 0.5s. 
-
+    while (n <= 5){
+        
+    }
     //3. Using a while-loop, flash the green LED on and off 10 times. Each flash should last 0.25s. 
 
     //4. Using a while-loop, flash the red LED on and off 20 times. Each flash should last 0.125s. 
