@@ -17,6 +17,9 @@ Buzzer alarm;
 
 int main()
 {
+    int sequence[6];
+    int total = 0;
+
     while (true)
     {
         leds = 0;
@@ -39,8 +42,94 @@ int main()
         // For full marks, debounce the switches and use flow control structures and arrays to avoid deep nesting of code
 
         // ***** MODIFY THE CODE BELOW HERE *****
+        wait_us(10000); //debounce
+        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){ // wait for all buttons to be released
+        }
+        wait_us(10000); // debounce
 
-        
+        while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){ // wait for any button to be pressed
+        }
+        if((SW1 == 1) && (SW2 == 1) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){ // only adds a value to sequence if a specific button is pressed
+            sequence[0] = 1;
+        }
+        wait_us(10000); // debounce
+
+        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){ // wait for all buttons to be released
+        }
+        wait_us(10000); // debounce
+
+        while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){// wait for any button to be pressed
+        }
+        if((SW1 == 0) && (SW2 == 1) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){
+            sequence[1] = 1;
+        }
+        wait_us(10000); // debounce
+
+        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){// wait for all buttons to be released
+        }
+        wait_us(10000); // debounce
+
+        while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){
+        }
+        if((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 1)){
+            sequence[2] = 1;
+        }
+        wait_us(10000); // debounce
+
+        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){// wait for all buttons to be released
+        }
+        wait_us(10000); // debounce
+
+        while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){
+        }
+        if((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 1) && (SW5 == 0)){
+            sequence[3] = 1;
+        }
+        wait_us(10000); // debounce
+
+        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){// wait for all buttons to be released
+        }
+        wait_us(10000); // debounce
+
+        while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){
+        }
+        if((SW1 == 0) && (SW2 == 1) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){
+            sequence[4] = 1;
+        }
+        wait_us(10000); // debounce
+
+        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){// wait for all buttons to be released
+        }
+        wait_us(10000); // debounce
+
+        while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){
+        }
+        if((SW1 == 0) && (SW2 == 0) && (SW3 == 1) && (SW4 == 0) && (SW5 == 0)){
+            sequence[5] = 1;
+        }
+        wait_us(10000); // debounce
+
+        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){// wait for all buttons to be released
+        }
+        wait_us(10000); // debounce
+
+        for(int i = 0; i<=5; i++){
+            total += sequence[i];
+        }
+        if(total== 6){
+            for(int x = 0; x<=2; x++){
+                leds[2] = 1;
+                wait_us(1000000);
+                leds[2] = 0;
+                wait_us(1000000);
+            }
+        }
+        else{
+            leds[0] = 1;
+            alarm.playTone("A", Buzzer::HIGHER_OCTAVE);
+            wait_us(5000000);
+            alarm.rest();
+        }
 
         // ***** MODIFY THE CODE ABOVE HERE *****
     }
