@@ -15,6 +15,39 @@ BusOut leds(TRAF_RED1_PIN, TRAF_YEL1_PIN, TRAF_GRN1_PIN);
 //Use this to sound an error
 Buzzer alarm;
 
+void switches(int isSW1, int isSW2, int isSW3, int isSW4, int isSW5){
+    static int sequence = 0;
+    static int counter = 0;
+    while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){ // wait for all buttons to be released
+        }
+    wait_us(10000); // debounce
+    while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){ // wait for any button to be pressed
+        }
+    wait_us(10000);
+    if((SW1 == isSW1) && (SW2 == isSW2) && (SW3 == isSW3) && (SW4 == isSW4) && (SW5 == isSW5)){ // only adds a value to sequence if a specific button is pressed
+        sequence += 1;
+    }
+    wait_us(10000); // debounce
+    counter += 1;
+    if(counter == 4){
+        if(sequence == 4){
+            for(int n = 0; n <= 2; n++){
+                leds[2] = 1;
+                wait_us(1000000);
+                leds[2] = 0;
+                wait_us(1000000);
+            }
+        }
+        else{
+            leds[0] = 1;
+            alarm.playTone("A", Buzzer::HIGHER_OCTAVE);
+            wait_us(5000000);
+            alarm.rest();
+        }
+    }
+
+}
+
 int main()
 {
     int sequence[6];
@@ -43,94 +76,11 @@ int main()
 
         // ***** MODIFY THE CODE BELOW HERE *****
         wait_us(10000); //debounce
-        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){ // wait for all buttons to be released
-        }
-        wait_us(10000); // debounce
 
-        while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){ // wait for any button to be pressed
-        }
-        if((SW1 == 1) && (SW2 == 1) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){ // only adds a value to sequence if a specific button is pressed
-            sequence[0] = 1;
-        }
-        wait_us(10000); // debounce
-
-        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){ // wait for all buttons to be released
-        }
-        wait_us(10000); // debounce
-
-        while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){// wait for any button to be pressed
-        }
-        if((SW1 == 0) && (SW2 == 1) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){
-            sequence[1] = 1;
-        }
-        wait_us(10000); // debounce
-
-        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){// wait for all buttons to be released
-        }
-        wait_us(10000); // debounce
-
-        while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){
-        }
-        if((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 1)){
-            sequence[2] = 1;
-        }
-        wait_us(10000); // debounce
-
-        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){// wait for all buttons to be released
-        }
-        wait_us(10000); // debounce
-
-        while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){
-        }
-        if((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 1) && (SW5 == 0)){
-            sequence[3] = 1;
-        }
-        wait_us(10000); // debounce
-
-        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){// wait for all buttons to be released
-        }
-        wait_us(10000); // debounce
-
-        while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){
-        }
-        if((SW1 == 0) && (SW2 == 1) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){
-            sequence[4] = 1;
-        }
-        wait_us(10000); // debounce
-
-        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){// wait for all buttons to be released
-        }
-        wait_us(10000); // debounce
-
-        while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){
-        }
-        if((SW1 == 0) && (SW2 == 0) && (SW3 == 1) && (SW4 == 0) && (SW5 == 0)){
-            sequence[5] = 1;
-        }
-        wait_us(10000); // debounce
-
-        while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){// wait for all buttons to be released
-        }
-        wait_us(10000); // debounce
-
-        for(int i = 0; i<=5; i++){
-            total += sequence[i];
-        }
-        if(total== 6){
-            for(int x = 0; x<=2; x++){
-                leds[2] = 1;
-                wait_us(1000000);
-                leds[2] = 0;
-                wait_us(1000000);
-            }
-        }
-        else{
-            leds[0] = 1;
-            alarm.playTone("A", Buzzer::HIGHER_OCTAVE);
-            wait_us(5000000);
-            alarm.rest();
-        }
-
+        switches(1, 1, 0, 0, 0);
+        switches(0, 0, 0, 0, 1);
+        switches(0, 0, 0, 1, 0);
+        switches(0, 1, 1, 0, 0);
         // ***** MODIFY THE CODE ABOVE HERE *****
     }
 }
