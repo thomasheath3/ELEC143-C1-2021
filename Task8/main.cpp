@@ -26,7 +26,11 @@ void displayArray(int rows, int cols, double *Array)
 }
 
 // ***** For (1) WRITE YOUR ARRAY Y HERE *****
-
+// 25  27  29   31
+//-41 -45 -49  -53
+// 9  108 119  130
+//-25 -27 -29  -31
+double y[4][4];
 // ***** For (3) WRITE YOUR FUNCTION HERE *****
 
 // *****  END YOUR FUNCTION HERE  *****
@@ -41,7 +45,11 @@ int main()
     // 1. Create another Array Y with the correct dimensions to hold the result of M*N (see comments above)
 
     // 2. Write a nested loop to perform a matrix multiplication M*N and store the result in Y
-
+    for(int i = 0; i <= 3; i++){
+        for(int x = 0; x <= 2; x++){
+            
+        }
+    }
     // 3. Write a function to multiply two matrices together (see comments above). Include some text code to demonstrate it working
 
     // ***** MODIFY THE CODE ABOVE HERE *****

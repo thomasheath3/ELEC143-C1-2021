@@ -118,12 +118,32 @@ int main()
         // 1. Write a loop to play the tune in the array `notes`
         //    You may recognise the tune :)
         //    Use player.playTone followed by a player.rest() to get the right duration of note as shown above
-        //
+        for(int n = 0; n<=51; n++){ // loops 52 times
+            if(notes[n].note[0] == '-'){ // if the note is a '-', then nothing is played and there is a pause
+                wait_us(notes[n].time_ms*1200);
+            }
+            else{ // else if there is a note to be payed
+                player.playTone(notes[n].note, notes[n].octave); // plays note from the array from the row n
+                wait_us(notes[n].time_ms*1200); // plays note for the duration on the same row as the note
+                player.rest(); // stops playing the note
+            }
+        }
         // 2. Write a nested loop to play the tune twice. Avoid replicating any code where possible.
+        for(int x = 0; x <= 1; x++){ // loops twice
+            for(int n = 0; n<=51; n++){ // does the same as before, checking to see if an actual not should be played or to pause.
+            if(notes[n].note[0] == '-'){
+                wait_us(notes[n].time_ms*1200);
+
+            }
+            
+            else{
+                player.playTone(notes[n].note, notes[n].octave);
+                wait_us(notes[n].time_ms*1200);
+                player.rest();
+            }
         
+        }
         // ***** MODIFY THE CODE ABOVE HERE *****
-        
+        }
     }
 }
-
-

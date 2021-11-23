@@ -16,42 +16,42 @@ BusOut leds(TRAF_RED1_PIN, TRAF_YEL1_PIN, TRAF_GRN1_PIN);
 Buzzer alarm;
 
 void switches(int isSW1, int isSW2, int isSW3, int isSW4, int isSW5){
-    static int sequence = 0;
+    static int sequence = 0; // values for sequence and counter are set to 0 first time function is used
     static int counter = 0;
     while((SW1 == 1) || (SW2 == 1) || (SW3 == 1) || (SW4 == 1) || (SW5 == 1)){ // wait for all buttons to be released
         }
     wait_us(10000); // debounce
     while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)){ // wait for any button to be pressed
         }
-    wait_us(10000);
+    wait_us(10000);// debounce
     if((SW1 == isSW1) && (SW2 == isSW2) && (SW3 == isSW3) && (SW4 == isSW4) && (SW5 == isSW5)){ // only adds a value to sequence if a specific button is pressed
         sequence += 1;
     }
     wait_us(10000); // debounce
-    counter += 1;
-    if(counter == 4){
-        if(sequence == 4){
-            for(int n = 0; n <= 2; n++){
-                leds[2] = 1;
+    counter += 1; // counter is always incremented by 1
+    if(counter == 4){ // checks if the function has been ran same number of times as number of buttons in the sequence
+        if(sequence == 4){ // checks if all the buttons pressed were correct
+            for(int n = 0; n <= 2; n++){ // loops 3 times
+                leds[2] = 1; // flashes leds on and off
                 wait_us(1000000);
                 leds[2] = 0;
                 wait_us(1000000);
             }
         }
-        else{
-            leds[0] = 1;
-            alarm.playTone("A", Buzzer::HIGHER_OCTAVE);
+        else{ // if any buttons pressed in the sequence were incorrect
+            leds[0] = 1; // turns on red led
+            alarm.playTone("A", Buzzer::HIGHER_OCTAVE); // plays buzzer noise for 5 seconds
             wait_us(5000000);
             alarm.rest();
         }
+        counter = 0; // reset value for counter and sequence to go again
+        sequence = 0;
     }
 
 }
 
 int main()
 {
-    int sequence[6];
-    int total = 0;
 
     while (true)
     {
@@ -77,7 +77,7 @@ int main()
         // ***** MODIFY THE CODE BELOW HERE *****
         wait_us(10000); //debounce
 
-        switches(1, 1, 0, 0, 0);
+        switches(1, 1, 0, 0, 0); // calls the function 4 times with the specific buttons that need to be pressed
         switches(0, 0, 0, 0, 1);
         switches(0, 0, 0, 1, 0);
         switches(0, 1, 1, 0, 0);
