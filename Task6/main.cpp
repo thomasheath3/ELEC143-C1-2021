@@ -137,7 +137,7 @@ int main()
             alarm.rest(); // turn off buzzer
         }
 
-        else{ // only other alternative is that the user's and actual 
+        else{ // only other alternative is that the user's and actual sequence do match
             for(int n = 0; n <= 2; n++){ // loops 3 times
                 leds[2] = 1; // flashes green led on and off, one second on and one second off.
                 wait_us(1000000);
@@ -145,6 +145,7 @@ int main()
                 wait_us(1000000);
             }
         }
+        leds = 0; // turn off all leds
 
         switches(1, 1, 0, 0, 0); // calls the function 4 times with the specific buttons that need to be pressed
         switches(0, 0, 0, 0, 1);

@@ -37,6 +37,57 @@ double Y[4][4] = {  //creating a blank 4x4 matrix for Y
     {0.0, 0.0, 0.0, 0.0},
 };
 // ***** For (3) WRITE YOUR FUNCTION HERE *****
+void matrixAB(int Arows, int Acols, int Bcols){
+    printf("\n");
+    int matrixA[Arows][Acols];
+    int matrixB[Acols][Bcols];
+    int AB[Arows][Bcols];
+    for(int i = 0; i<Arows; i++){
+        for(int x = 0; x<Acols; x++){
+            printf("\nEnter a value for A, cell %d, %d:\n", i, x);
+            scanf("%d", &matrixA[i][x]);
+            printf("%d", matrixA[i][x]);
+        }
+    }
+    for(int i = 0; i<Acols; i++){
+        for(int x = 0; x<Bcols; x++){
+            printf("\nEnter a value for B, cell %d, %d:\n", i, x);
+            scanf("%d", &matrixB[i][x]);
+            printf("%d", matrixB[i][x]);
+        }
+    }
+    for(int i = 0; i<Arows; i++){
+        for(int g = 0; g<Bcols; g++){
+            int add=0;
+            for(int c = 0; c<Acols; c++){
+                add += matrixA[i][c] * matrixB[c][g];
+            }
+            AB[i][g] = add;
+        }
+    }
+    printf("\n");
+    for(int z = 0; z<=3; z++){ // loops 4 times, number of rows for Y
+        for(int j = 0; j<=3; j++){ // loops number of rows for Y
+            printf("%d ", matrixA[z][j]); // this prints each row of Y and then a new line to present all values in matrix form
+        }
+        printf("\n");
+    }
+    printf("\n");
+    for(int z = 0; z<=3; z++){ // loops 4 times, number of rows for Y
+        for(int j = 0; j<=3; j++){ // loops number of rows for Y
+            printf("%d ", matrixB[z][j]); // this prints each row of Y and then a new line to present all values in matrix form
+        }
+        printf("\n");
+    }
+    printf("\n");
+    for(int z = 0; z<=3; z++){ // loops 4 times, number of rows for Y
+        for(int j = 0; j<=3; j++){ // loops number of rows for Y
+            printf("%d ", AB[z][j]); // this prints each row of Y and then a new line to present all values in matrix form
+        }
+        printf("\n");
+    }
+
+}
 
 // *****  END YOUR FUNCTION HERE  *****
 
@@ -70,9 +121,23 @@ int main()
     // 3. Write a function to multiply two matrices together (see comments above). Include some text code to demonstrate it working
 
     // ***** MODIFY THE CODE ABOVE HERE *****
+    printf("\n");
+    int Arow;
+    int Acol;
+    int Bcol;
 
-
+    printf("Enter number of rows for matrix A:\n");
+    scanf("%d", &Arow);
+    printf("%d\n", Arow);
+    printf("Enter number of columns for A:\n");
+    scanf("%d", &Acol);
+    printf("%d\n", Acol);
+    printf("Enter number of rows for matrix B:\n");
+    scanf("%d", &Bcol);
+    printf("%d\n", Bcol);
+    matrixAB(Arow, Acol, Bcol);
     while (true) {
     }
 }
 
+                                                              
