@@ -104,7 +104,7 @@ int main()
 
         for(int n = 0; n <= 3; n++){ // loops for the number of button presses
             while((SW1 == 0) && (SW2 == 0) && (SW3 == 0) && (SW4 == 0) && (SW5 == 0)); // waits for any button to be pressed
-            wait_us(20000); // debounce
+            wait_us(100000); // debounce
             int inputs[5] = {SW1, SW2, SW3, SW4, SW5}; // creates an array which stores the state of each button
             for(int z = 0; z <= 4; z++){ // loops for the number of columns in the sequence arrays
                 userSequence[n][z] = inputs[z]; // writes each button state to the nth row of the array in order
